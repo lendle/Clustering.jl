@@ -252,6 +252,10 @@ function _kmeans!{T<:FloatingPoint}(
     num_affected::Int = k # number of centers, to which the distances need to be recomputed
 
     dmat = pairwise(SqEuclidean(), centers, x)
+<<<<<<< Updated upstream
+=======
+    dmat = convert(Array{T}, dmat) #Can be removed if one day Distance.result_type(SqEuclidean(), T, T) == T
+>>>>>>> Stashed changes
     update_assignments!(dmat, true, assignments, costs, counts, to_update, unused)
     objv = w == nothing ? sum(costs) : dot(w, costs)
 
